@@ -25,7 +25,7 @@ const ProductDetails: React.FC = () => {
 
   const handleAddComment = () => {
     const newComment = {
-      name: 'Anonymous', // Replace with user info if available
+      name: '', // Replace with user info if available
       comment: commentInput,
       timestamp: new Date().toLocaleString()
     };
@@ -34,7 +34,7 @@ const ProductDetails: React.FC = () => {
   };
 
   const handleBuyConfirm = () => {
-    const whatsappURL = `https://wa.me/1234567890?text=Name:%20${encodeURIComponent(
+    const whatsappURL = `https://wa.me/+2348033204246?text=Name:%20${encodeURIComponent(
       customerName
     )}%0AProduct:%20${encodeURIComponent(product?.name || '')}%0AQuantity:%201%0APrice:%20₦${product?.price}`;
     window.open(whatsappURL, '_blank');

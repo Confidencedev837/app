@@ -34,7 +34,7 @@ body {
 /* Navbar Logo */
 .navbar-logo a {
   color: #fff;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   text-decoration: none;
 }
 
@@ -151,9 +151,12 @@ body {
   /* You can adjust the size of the icons if needed */
   font-size: 20px;
 }
-
+.preview-btn:hover{
+  color: rgb(0, 102, 255);
+}
 .like-btn:hover,
-.preview-btn:hover {
+.more-btn:hover
+ {
   background: #43a047;
 }
 
