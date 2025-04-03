@@ -31,7 +31,11 @@ const Home: React.FC = () => {
           {products
             .filter((prod) => prod.id) // Filter out products without an id
             .map((prod) => (
-              <ProductCard key={prod.id} {...prod} />
+              <ProductCard
+              key={prod.id as string} // Ensure key is a string
+              {...prod}
+              id={prod.id as string} // Ensure id is a string
+            />
             ))}
         </div>
       )}
