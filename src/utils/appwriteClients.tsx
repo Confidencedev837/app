@@ -52,7 +52,7 @@ export const fetchProducts = async (): Promise<Product[]> => {
       name: doc.name,
       description: doc.description,
       price: doc.price,
-      imageIds: doc.imageIds.map((fileId: string) => getImageUrl(fileId)), // Map image IDs to URLs
+      imageIds: doc.imageIds.map((fileId: string) => fileId)
     }));
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -60,9 +60,8 @@ export const fetchProducts = async (): Promise<Product[]> => {
   }
 };
 // Function to get public image URL from Appwrite storage using a file ID.
-export const getImageUrl = (id: string): string => {
-  return client
-    .setEndpoint('https://cloud.appwrite.io/v1') // make sure this matches above
-    .setProject('67ee50a1000edc795c2b')
-     + `https://cloud.appwrite.io/v1/storage/buckets/${STORAGE_BUCKET_ID}/files/${id}/view?project=${client.config.project}`;
+export const getImageUrl = (fileid: string): string => {
+  // Ensure the fileid is just the ID and not a full URL
+  return `https://cloud.appwrite.io/v1/storage/buckets/${STORAGE_BUCKET_ID}/files/${fileid}/view?project=67ee50a1000edc795c2b`;
 };
+

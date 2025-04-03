@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     <footer className="footer">
       <div>
         <p>Address: [Your Address]</p>
-        <p>Email: [Business Email]</p>
+        <p>Email: grace.pggscargo@gmail.com</p>
         <p>Phone: [Phone Number]</p>
       </div>
       <div className="footer-socials">
