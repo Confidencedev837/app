@@ -13,7 +13,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   return (
     <div className="carousel">
       <button className='bun' onClick={prevImage}>{'<'}</button>
-      <img src={images[current]} alt={`Slide ${current}`} />
+      <img className="crimage"src={images[current]} alt={`Slide ${current}`} />
       <button className='bun2'onClick={nextImage}>{'>'}</button>
     </div>
   );

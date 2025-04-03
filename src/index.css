@@ -128,19 +128,31 @@ body {
   justify-content: space-between;
   margin-top: 1rem;
 }
-.like-btn,
-.more-btn,
-.preview-btn {
+.like-btn,.more-btn {
   background: #4caf50;
   border: none;
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
   transition: background 0.3s;
+  gap: 0.2rem; /* Add space between the icons */
 }
+
+.preview-btn{
+  text-decoration: underline;
+  font-size: 15px;
+}
+
+.like-btn i,
+.more-btn i,
+.preview-btn i {
+  /* You can adjust the size of the icons if needed */
+  font-size: 20px;
+}
+
 .like-btn:hover,
-.more-btn:hover,
 .preview-btn:hover {
   background: #43a047;
 }
@@ -155,7 +167,13 @@ body {
 }
 
 /* Carousel Image */
-.carousel-image {
+.crimage {
+  width: 100%;
+  height:min-content ;
+  display: block;
+  max-height: 12rem;
+  border-radius: 8px; /* Rounded corners for the images */
+  transition: transform 0.5s ease; /* Smooth transition for image changes */
 }
 .bun , .bun2 {
    background: rgba(0, 191, 0, 0.7);
