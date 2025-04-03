@@ -8,10 +8,16 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const loadProducts = async () => {
-      const prods = await fetchProducts();
-      setProducts(prods);
-      setLoading(false);
+      try {
+        const prods = await fetchProducts();
+        setProducts(prods);
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      } finally {
+        setLoading(false);
+      }
     };
+
     loadProducts();
   }, []);
 
@@ -22,9 +28,11 @@ const Home: React.FC = () => {
         <p>Loading products...</p>
       ) : (
         <div className="product-grid">
-          {products.map((prod) => (
-            <ProductCard key={prod.id} {...prod} />
-          ))}
+          {products
+            .filter((prod) => prod.id) // Filter out products without an id
+            .map((prod) => (
+              <ProductCard key={prod.id} {...prod} />
+            ))}
         </div>
       )}
     </div>

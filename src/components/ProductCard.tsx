@@ -4,7 +4,7 @@ import Carousel from './Carousel';
 import { getImageUrl } from '../utils/appwriteClients';
 
 interface ProductCardProps {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   price: number;
