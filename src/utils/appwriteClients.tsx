@@ -43,16 +43,20 @@ export const createProduct = async (product: Product): Promise<void> => {
   );
 };
 
-// Fetches all products from Appwrite database.
 export const fetchProducts = async (): Promise<Product[]> => {
-  const response = await databases.listDocuments(DATABASE_ID, PRODUCTS_COLLECTION_ID);
-  return response.documents.map((doc: any) => ({
-    id: doc.$id,
-    name: doc.name,
-    description: doc.description,
-    price: doc.price,
-    imageIds: doc.imageIds
-  }));
+  try {
+    const response = await databases.listDocuments(DATABASE_ID, PRODUCTS_COLLECTION_ID);
+    return response.documents.map((doc: any) => ({
+      id: doc.$id,
+      name: doc.name,
+      description: doc.description,
+      price: doc.price,
+      imageIds: doc.imageIds
+    }));
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return []; // Return an empty array in case of failure
+  }
 };
 
 // Function to get public image URL from Appwrite storage using a file ID.
