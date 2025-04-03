@@ -11,7 +11,7 @@ const AdminLogin: React.FC = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     // In production use secure authentication. Here, credentials are hardcoded.
-    if (username === 'admin' && password === 'p') {
+    if (username === 'admin' && password === 'pa') {
       login();
       navigate('/admin/dashboard');
     } else {
