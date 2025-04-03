@@ -22,7 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, name, description, price,
 
   return (
     <div className="product-card">
-      <Carousel images={imageUrls} />
+      <Carousel images={imageUrls} /> {/* Pass the product's images */}
       <h3>{name}</h3>
       <p>
         {showFullDescription ? description : `${description.substring(0, 100)}...`}
