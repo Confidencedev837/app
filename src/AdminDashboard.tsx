@@ -5,7 +5,7 @@ import { Bar } from 'react-chartjs-2';
 import FloatingActionButton from './components/FloatingActionButton';
 
 // Dummy dashboard data function – replace with your Appwrite queries if desired.
-const fetchDashboardData = async (days: number) => {
+const fetchDashboardData = async () => {
   return {
     visits: 1234,
     productClicks: 567,
@@ -34,7 +34,7 @@ const AdminDashboard: React.FC = () => {
 
   useEffect(() => {
     const loadData = async () => {
-      const data = await fetchDashboardData(days);
+      const data = await fetchDashboardData();
       setDashboardData(data);
     };
     loadData();
