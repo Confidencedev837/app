@@ -12,9 +12,9 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 
   return (
     <div className="carousel">
-      <button onClick={prevImage}>{'<'}</button>
+      <button className='bun' onClick={prevImage}>{'<'}</button>
       <img src={images[current]} alt={`Slide ${current}`} />
-      <button onClick={nextImage}>{'>'}</button>
+      <button className='bun2'onClick={nextImage}>{'>'}</button>
     </div>
   );
 };

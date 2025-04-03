@@ -146,33 +146,65 @@ body {
 }
 
 /* Carousel */
+/* Carousel Container */
 .carousel {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 10px; /* Slightly rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for a more elegant look */
 }
+
+/* Carousel Image */
 .carousel-image {
-  width: 100%;
-  height: auto;
-  display: block;
 }
+.bun , .bun2 {
+   background: rgba(0, 191, 0, 0.7);
+   color: #fff;
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   border: none;
+   padding: 0.5rem;
+   cursor: pointer;
+   font-size: 1.3rem;
+   border-radius: 30%; /* Circular buttons */
+   transition: background 0.3s ease; 
+}
+/* Carousel Button */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(4, 197, 7, 0.7);
-  color: #000000;
   border: none;
-  padding: 0.5rem;
+  padding: 1rem;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  border-radius: 50%; /* Circular buttons */
+  transition: background 0.3s ease; /* Smooth transition on hover */
 }
-.carousel-btn.prev {
+
+.carousel-btn:hover {
+  background: rgba(0, 191, 0, 0.9); /* Brighten green on hover */
+}
+
+/* Previous Button */
+.bun{
   left: 10px;
 }
-.carousel-btn.next {
+
+/* Next Button */
+.bun2{
   right: 10px;
 }
+
+/* Responsive styling for small screens */
+@media (max-width: 768px) {
+  .carousel-btn {
+    padding: 0.8rem;
+    font-size: 1.2rem; /* Slightly smaller buttons on smaller screens */
+  }
+}
+
 
 /* Floating Action Button */
 .fab {
