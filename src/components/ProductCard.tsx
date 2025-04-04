@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, name, description, price,
       <div className="card-actions">
         <button className="like-btn" onClick={handleLike}><span className="material-icons">thumb_up</span>Like ({likeCount})</button>
         <Link to={`/product/${id}`}>
-          <button className="more-btn"><span className="material-icons">info</span>More Info</button>
+          <button className="more-btn"><span className="material-icons">local_mall</span>Get</button>
         </Link>
       </div>
     </div>
