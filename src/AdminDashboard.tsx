@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AdminContext } from './context/AdminContext';
 import { useNavigate } from 'react-router-dom';
-import { Bar } from 'react-chartjs-2';
+// import { Bar } from 'react-chartjs-2';
 import FloatingActionButton from './components/FloatingActionButton';
 
 const fetchDashboardData = async () => {
@@ -27,10 +27,10 @@ const fetchDashboardData = async () => {
 };
 
 const AdminDashboard: React.FC = () => {
-  const { isAdmin, logout } = useContext(AdminContext);
+  const { isAdmin, } = useContext(AdminContext);
   const navigate = useNavigate();
-  const [dashboardData, setDashboardData] = useState<any>(null);
-  const [days, setDays] = useState(30);
+  const [ setDashboardData] = useState<any>(null);
+  const [days, ] = useState(30);
 
   useEffect(() => {
     if (!isAdmin) navigate('/admin/login');
@@ -44,16 +44,16 @@ const AdminDashboard: React.FC = () => {
     loadData();
   }, [days]);
 
-  const chartData = {
-    labels: ['Visits', 'Product Clicks', 'Leads'],
-    datasets: [
-      {
-        label: 'Metrics',
-        data: dashboardData ? [dashboardData.visits, dashboardData.productClicks, dashboardData.leads] : [],
-        backgroundColor: ['rgba(75,192,192,0.8)', 'rgba(153,102,255,0.8)', 'rgba(255,159,64,0.8)'],
-      },
-    ],
-  };
+  // const chartData = {
+  //   labels: ['Visits', 'Product Clicks', 'Leads'],
+  //   datasets: [
+  //     {
+  //       label: 'Metrics',
+  //       data: dashboardData ? [dashboardData.visits, dashboardData.productClicks, dashboardData.leads] : [],
+  //       backgroundColor: ['rgba(75,192,192,0.8)', 'rgba(153,102,255,0.8)', 'rgba(255,159,64,0.8)'],
+  //     },
+  //   ],
+  // };
 
   return (
     <div className="admin-dashboard">

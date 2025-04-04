@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaPhone,FaEnvelope,FaPhoneAlt,FaHome,FaTiktok,FaFacebook,FaInstagram} from 'react-icons/fa'; 
+import { FaEnvelope,FaPhoneAlt,FaHome,FaTiktok,FaFacebook,FaInstagram} from 'react-icons/fa'; 
 const Footer: React.FC = () => {
   return (
     <footer className="footer">
