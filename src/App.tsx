@@ -12,6 +12,7 @@ import { AdminProvider } from './context/AdminContext';
 const App: React.FC = () => {
   return (
     <AdminProvider>
+      
       <div>
         <Navbar />
         <Routes>

@@ -57,36 +57,7 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <div className="admin-dashboard">
-      <h2>Admin Dashboard</h2>
-      <button onClick={logout} className="logout-btn">Logout</button>
-      <div className="dashboard-controls">
-        <label>Select Period: </label>
-        <select value={days} onChange={(e) => setDays(Number(e.target.value))}>
-          <option value={30}>30 Days</option>
-          <option value={60}>60 Days</option>
-          <option value={90}>90 Days</option>
-        </select>
-      </div>
-      {dashboardData ? (
-        <>
-          <Bar data={chartData} />
-          <div className="sales-data">
-            <h3>Sales Data</h3>
-            {dashboardData.sales.map((sale: any, index: number) => (
-              <div key={index} className="sale-item">
-                <p><strong>Product ID:</strong> {sale.productId}</p>
-                <ul>
-                  {sale.customers.map((customer: any, idx: number) => (
-                    <li key={idx}>{customer.name} - {customer.email}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </>
-      ) : (
-        <p>Loading dashboard data...</p>
-      )}
+     
       <FloatingActionButton />
     </div>
   );

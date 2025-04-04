@@ -35,6 +35,7 @@ export const createProduct = async (product: Product): Promise<void> => {
     PRODUCTS_COLLECTION_ID,
     ID.unique(),
     {
+      id:ID.unique(),
       name: product.name,
       description: product.description,
       price: product.price,
