@@ -58,7 +58,7 @@ const ProductDetails: React.FC = () => {
   if (product && product.id) {
     await saveBuyer(customerName, customerEmail, product.id);
   } else {
-    console.error('Product or Product ID is missing.');
+    console.log('Product or Product ID is missing.' );
   }
     const whatsappURL = `https://wa.me/+2348033204246?text=Name:%20${encodeURIComponent(
       customerName

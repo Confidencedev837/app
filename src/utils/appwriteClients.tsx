@@ -22,13 +22,11 @@ export const uploadImage = async (file: File): Promise<string> => {
 export const saveBuyer = async (name: string, email: string, productId: string) => {
   try {
     console.log('Saving buyer...');
-    alert('Saving buyer...');
     await databases.createDocument(DATABASE_ID, buyerCollectionId, ID.unique(), {
       name,
       email,
       productId,
     });
-    alert('Buyer saved successfully!');
     console.log('Buyer saved successfully!');
   } catch (error) {
     alert('Error: ' + error);

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 interface CarouselProps {
   images: string[];
 }
@@ -15,9 +14,13 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   return (
     <div className="carousel-container">
       <div className="carousel">
-        <button className='bun' onClick={prevImage}>{'<'}</button>
+        <button className="bun" onClick={prevImage}>
+          {'<'}
+        </button>
         <img className="crimage" src={images[current]} alt={`Slide ${current}`} />
-        <button className='bun2' onClick={nextImage}>{'>'}</button>
+        <button className="bun2" onClick={nextImage}>
+          {'>'}
+        </button>
       </div>
 
       {/* Dots */}
