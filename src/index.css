@@ -8,9 +8,12 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5;
+  background-color: #cfedff;
   color: #333;
+  font-size: large;
+  font-family: "Winky Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 /* App container */
@@ -19,17 +22,81 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
-/* Navbar */
-/* Navbar */
+.content-wrap {
+  flex: 1; /* Fills the remaining space */
+  padding: 20px;
+}
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full height of screen */
+}
+/* Styles for Navbar */
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space between logo and menu items */
-  background-color: #1f1f1f;
-  padding: 1rem 2rem;
+  justify-content: space-between;
+  background: rgb(246, 246, 246);
+  background: linear-gradient(90deg, rgba(246, 246, 246, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 100%);
+  padding: 3rem 2rem;
   color: #fff;
+  border-radius: 0rem 0rem 3rem 3rem;
+  position: relative;
 }
+
+/* Styles for navbar on small screens */
+
+  .navbar-menu {
+    display: flex; /* Show nav items on small screens */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-menu.hidden {
+    display: none; /* Hide nav items when search bar is visible */
+  }
+
+  .navbar-search-bar {
+    display: none; /* Hide search bar initially */
+    position: absolute;
+    top: 80px; /* Adjust this value to match navbar height */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease-in-out;
+  }
+  .navbar-search-bar input {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #333;
+  }
+  .search-bar-visible {
+    display: block;
+    top: 5rem; /* Position it just below the navbar */
+    width: 100%;
+    background-color: #6eaced;
+    border-radius: 10px;
+    padding: 1rem;
+    size: 100%;
+    color: #1f1f1f;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+    transition: top 0.3s ease, opacity 0.3s ease;
+  }
+
+  .search-icon { /* Show search icon */
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+  }
+
 
 /* Navbar Logo */
 .navbar-logo a {
@@ -127,6 +194,7 @@ body {
 .home h1 {
   text-align: center;
   margin-bottom: 2rem;
+  font-size: larger;
 }
 .product-grid {
   display: grid;
@@ -140,10 +208,12 @@ body {
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px 5px rgb(255, 255, 255);
   transition: transform 0.3s;
 }
 .product-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-7px);
+  box-shadow: 0 4px 10px 5px rgb(153, 228, 255);
 }
 .product-card h3 {
   margin: 0.8rem 0;
@@ -222,9 +292,20 @@ body {
   width: 100%;
   height:min-content ;
   display: block;
-  max-height: 12rem;
+  max-height: 10%;
   border-radius: 8px; /* Rounded corners for the images */
   transition: transform 0.5s ease; /* Smooth transition for image changes */
+}
+@media (max-width:768px) {
+  .crimage {
+    width: 100%;
+  height:min-content ;
+  display: block;
+  max-height: 12rem;
+  border-radius: 8px; /* Rounded corners for the images */
+  transition: transform 2s ease;
+  }
+  
 }
 .bun , .bun2 {
    background: rgba(0, 191, 0, 0.7);
@@ -239,18 +320,33 @@ body {
    border-radius: 30%; /* Circular buttons */
    transition: background 0.3s ease; 
 }
-/* Carousel Button */
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  padding: 1rem;
-  cursor: pointer;
-  font-size: 1.5rem;
-  border-radius: 50%; /* Circular buttons */
-  transition: background 0.3s ease; /* Smooth transition on hover */
+
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.dots {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #007bff;
+}
+
 
 .carousel-btn:hover {
   background: rgba(0, 191, 0, 0.9); /* Brighten green on hover */
@@ -288,17 +384,32 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #1f1f1f;
+  background: rgb(246,246,246);
+  background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
   color: #fff;
   border: none;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   font-size: 2rem;
+  text-align: center;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
-
+.button1{
+  gap: 30px;
+  background-color: #00df0f;
+  margin: 10px;
+  border-radius: 0.4rem;
+  padding: 0.3rem;
+}
+.button2{
+  gap: 30px;
+  background-color: #fc4646;
+  margin: 10px;
+  border-radius: 0.4rem;
+  padding: 0.3rem;
+}
 /* Admin & Upload Forms */
 .admin-login,
 .upload-product {

@@ -1,4 +1,4 @@
-import { Client, Databases, Storage, ID } from 'appwrite';
+import { Client, Databases, Storage, ID, Query } from 'appwrite';
 
 const client = new Client()
   .setEndpoint('https://cloud.appwrite.io/v1') // e.g., 'https://cloud.appwrite.io/v1'
@@ -11,11 +11,59 @@ const storage = new Storage(client);
 const DATABASE_ID = '67ee54f1000a66030b03';
 const PRODUCTS_COLLECTION_ID = '67ee54fb003b923989d7';
 const STORAGE_BUCKET_ID = '67ee55c3002f451258a0';
+const buyerCollectionId = '67f3a5d9001e4cf6985c';
+const commentCollectionId = '67f3a65900269da4de11';
 
 // Uploads an image file to Appwrite Storage and returns the file ID.
 export const uploadImage = async (file: File): Promise<string> => {
   const response = await storage.createFile(STORAGE_BUCKET_ID, ID.unique(), file);
   return response.$id;
+};
+export const saveBuyer = async (name: string, email: string, productId: string) => {
+  try {
+    console.log('Saving buyer...');
+    alert('Saving buyer...');
+    await databases.createDocument(DATABASE_ID, buyerCollectionId, ID.unique(), {
+      name,
+      email,
+      productId,
+    });
+    alert('Buyer saved successfully!');
+    console.log('Buyer saved successfully!');
+  } catch (error) {
+    alert('Error: ' + error);
+  }
+};
+export const saveComment = async (
+  name: string,
+  comment: string,
+  timestamp: string,
+  productId: string
+): Promise<void> => {
+  try {
+    await databases.createDocument(DATABASE_ID, commentCollectionId, ID.unique(), {
+      name,
+      comment,
+      timestamp,
+      productId,
+    });
+    console.log('Comment saved successfully!');
+  } catch (err) {
+    console.error('Error saving comment:', err);
+  }
+};
+export const fetchComments = async (productId: string) => {
+  try {
+    const res = await databases.listDocuments(DATABASE_ID, commentCollectionId, [
+      // only fetch comments for this product
+      Query.equal('productId', [productId]),
+      Query.orderDesc('$createdAt'),
+    ]);
+    return res.documents;
+  } catch (err) {
+    console.error('Error fetching comments:', err);
+    return [];
+  }
 };
 
 // Creates a new product document in Appwrite database.
